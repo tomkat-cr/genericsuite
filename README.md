@@ -67,7 +67,7 @@ Join our community to share ideas, ask questions, and collaborate on building th
 
 ## License
 
-[GenericSuite](https://genericsuite.carlosjramirez.com) is open-sourced software licensed under the ISC license.
+[GenericSuite](https://genericsuite.carlosjramirez.com) is open-sourced software licensed under the MIT license.
 
 ## Credits
 

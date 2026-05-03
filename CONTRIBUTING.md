@@ -159,4 +159,4 @@ Be respectful and constructive. Harassment or exclusionary behavior of any kind 
 ---
 
 GenericSuite is developed and maintained by [Carlos J. Ramirez](https://carlosjramirez.com).
-Licensed under the [ISC License](LICENSE).
+Licensed under the [MIT License](LICENSE).
