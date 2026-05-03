@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to AI Coding Assistants (Claude Code, Gemini CLI, Cursor, Antigravity, etc.) when working with code in this repository.
 
 ## Repository Structure
 
@@ -97,3 +97,8 @@ All packages use stage-specific `.env` files (`dev`, `qa`, `staging`, `prod`). S
 
 - Full docs: https://genericsuite.carlosjramirez.com
 - Mirror: https://genericsuite.readthedocs.io
+
+## Important Notes
+
+- The files `AGENTS.md`, `GEMINI.md`, etc. (if present) have only a referece to `@CLAUDE.md` — edit only `CLAUDE.md`.
+- Skills, commands, rules, and sub-agents are located in the `.claude/` directory.
