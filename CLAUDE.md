@@ -4,7 +4,7 @@ This file provides guidance to AI Coding Assistants (Claude Code, Gemini CLI, Cu
 
 ## Repository Structure
 
-GenericSuite is a monorepo orchestration layer. All 14 packages live under `packages/` as **git submodules**, each pointing to an independent repository on GitHub (`github.com/tomkat-cr/<package-name>`). Every package has its own `CLAUDE.md` with package-specific guidance — read those when working inside a specific package.
+This is a monorepo orchestration layer (Superproject) of the GenericSuite ecosystem. All 14 packages live under `packages/` as **git submodules**, each pointing to an independent repository on GitHub (`github.com/tomkat-cr/<package-name>`). Every package has its own `CLAUDE.md` with package-specific guidance — read those when working inside a specific package.
 
 ```
 packages/
