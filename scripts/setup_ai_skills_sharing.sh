@@ -14,20 +14,16 @@ TARGET_DIR="$PWD/packages"
 ACTION="$1"
 if [ "$ACTION" = "" ]; then
     echo ""
-    echo "Usage: $0 <run|remove>"
+    echo "Share superproject AI skills/commands across code agent tools (Claude, Gemini, Codex, Cursor, Agents) on all packages."
+    echo "Usage: $0 <add|remove>"
+    echo ""
     exit 1
 fi
 
 # PACKAGE_LIST is defined in get_package_list.sh
 source ./scripts/get_package_list.sh > /dev/null 2>&1
 
-# PACKAGE_LIST=(
-#     "genericsuite-be"
-#     "genericsuite-basecamp"
-# )
-
 remove_shared_skills() {
-    echo ""
     echo ""
     echo "** Removing shared skills on '$SOURCE_DIR' and '$TARGET_DIR' **"
     echo ""
@@ -155,45 +151,40 @@ setup_tool_dir_by_dir() {
     fi
 
 
+    if [ ! -d "$target_dir" ]; then
+        echo "(1) mkdir -p \"$target_dir\""
+        mkdir -p "$target_dir"
+    fi
     if [ "$destroy_target_dirs" = "true" ]; then
         # Remove the target directory/symlink, re-create it and symlink all source to target
         target_subdir="$target_dir/$(basename "$source_dir")"
-        if [ ! -d "$target_dir" ]; then
-            echo "(1) mkdir -p \"$target_dir\""
-            mkdir -p "$target_dir"
-        fi
         if [ -d "$target_subdir" ]; then
             echo "(2) rm -rf \"$target_subdir\""
             rm -rf "$target_subdir"
         fi
-        echo "(3) ln -s \"$source_dir\" \"$target_dir\""
-        ln -s "$source_dir" "$target_dir"
-    else
-        # Ensure target skills/commands/* directory exist
-        mkdir -p "$target_dir"
-        # For each sub-directory of the source directory, symlink it
-        source_mid_dir="$(basename "$source_dir")"
-        for source_subdir in "$source_dir"/*; do
-            if [ ! -d "$target_dir" ]; then
-                echo "(4) mkdir -p \"$target_dir\""
-                mkdir -p "$target_dir"
-            fi
-            if [ ! -d "$target_dir/$source_mid_dir" ]; then
-                echo "(4) mkdir -p \"$target_dir/$source_mid_dir\""
-                mkdir -p "$target_dir/$source_mid_dir"
-            fi
-            if [ -d "$source_subdir" ]; then
-                target_subdir="$target_dir/$source_mid_dir/$(basename "$source_subdir")"
-                if [ -d "$target_subdir" ]; then
-                    echo "(5) rm -rf \"$target_subdir\""
-                    rm -rf "$target_subdir"
-                fi
-                echo "(6) ln -s \"$source_subdir\" \"$target_dir/$source_mid_dir\""
-                ln -s "$source_subdir" "$target_dir/$source_mid_dir"
-            fi
-        done
     fi
 
+    # For each sub-directory of the source directory, symlink it
+    source_mid_dir="$(basename "$source_dir")"
+    for source_subdir in "$source_dir"/*; do
+        if [ ! -d "$target_dir" ]; then
+            echo "(4) mkdir -p \"$target_dir\""
+            mkdir -p "$target_dir"
+        fi
+        if [ ! -d "$target_dir/$source_mid_dir" ]; then
+            echo "(4) mkdir -p \"$target_dir/$source_mid_dir\""
+            mkdir -p "$target_dir/$source_mid_dir"
+        fi
+        if [ -d "$source_subdir" ]; then
+            target_subdir="$target_dir/$source_mid_dir/$(basename "$source_subdir")"
+            if [ -d "$target_subdir" ]; then
+                echo "(5) rm -rf \"$target_subdir\""
+                rm -rf "$target_subdir"
+            fi
+            echo "(6) ln -s \"$source_subdir\" \"$target_dir/$source_mid_dir\""
+            ln -s "$source_subdir" "$target_dir/$source_mid_dir"
+        fi
+    done
 }
 
 setup_package() {
@@ -262,7 +253,7 @@ setup_package() {
 
 # Main procedure
 
-if [ "$ACTION" = "run" ]; then
+if [ "$ACTION" = "add" ]; then
     share_skills
 elif [ "$ACTION" = "remove" ]; then
     remove_shared_skills
