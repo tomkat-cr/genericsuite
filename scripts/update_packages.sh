@@ -18,22 +18,9 @@ GIT_USER="${GIT_USER:-tomkat-cr}"
 GIT_HOST="${GIT_HOST:-https://github.com}"
 
 PACKAGES_PATH="./packages"
-PACKAGE_LIST=(
-    "genericsuite-app-maker"
-    "genericsuite-asdt-be"
-    "genericsuite-basecamp"
-    "genericsuite-basecamp-app"
-    "genericsuite-be"
-    "genericsuite-be-ai"
-    "genericsuite-be-scripts"
-    "genericsuite-codegen"
-    "genericsuite-fe"
-    "genericsuite-fe-ai"
-    "genericsuite-fe-scripts"
-    "genericsuite-gitops"
-    "genericsuite-mobile"
-    "genericsuite-skills"
-)
+
+# PACKAGE_LIST is defined in get_package_list.sh
+source ./scripts/get_package_list.sh > /dev/null 2>&1
 
 if [ ! -d "${PACKAGES_PATH}" ]; then
     if ! mkdir -p "${PACKAGES_PATH}"; then
