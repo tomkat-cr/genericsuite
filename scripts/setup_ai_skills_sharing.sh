@@ -8,30 +8,72 @@
 
 set -e
 
-SOURCE_DIR="$PWD"   # Source must ba a absolute (non-relative) path, so "ln -s" works as expected
-TARGET_DIR="$PWD/packages"
+AI_DIR=".ai"
 
 ACTION="$1"
-if [ "$ACTION" = "" ]; then
+SOURCE_DIR="$2"   # Source must be converted to an absolute (non-relative) path, so "ln -s" works as expected
+TARGET_DIR="$3"
+
+SCRIPT_DIR="$(dirname "$0")"
+if [ "${SCRIPT_DIR}" = "." ]; then
+    SCRIPT_DIR="$PWD"
+else
+    cd "${SCRIPT_DIR}"
+    SCRIPT_DIR="$(pwd)"
+    cd -
+fi
+
+if [ "${ACTION}" = "" ]; then
     echo ""
-    echo "Share superproject AI skills/commands across code agent tools (Claude, Gemini, Codex, Cursor, Agents) on all packages."
-    echo "Usage: $0 <add|remove>"
+    echo "Share AI skills/commands ('${AI_DIR}' directory) across code agent tools: Claude, Gemini, Codex, Cursor, Agents."
+    echo "Usage: $0 <action> <source directory> <target directory>"
+    echo ""
+    echo "Where:"
+    echo "  <action> must be 'add' or 'remove'"
+    echo "  <source directory> is the path where the '${AI_DIR}' directory is located. Default is the current directory."
+    echo "  <target directory> is the path to the target directory where the AI skills/commands will be symlinked. Default is the current directory."
+    echo ""
     echo ""
     exit 1
 fi
 
-# PACKAGE_LIST is defined in get_package_list.sh
-source ./scripts/get_package_list.sh > /dev/null 2>&1
+set_default_values() {
+    if [ "${SOURCE_DIR}" = "" ]; then
+        SOURCE_DIR="."
+    fi
+    if [ "${TARGET_DIR}" = "" ]; then
+        TARGET_DIR="."
+    fi
+}
+
+fix_dir_path_to_be_absolute() {
+    local path_to_fix="$1"
+    if [ "${path_to_fix}" = "." ]; then
+        echo "$PWD"
+    else
+        cd "${path_to_fix}"
+        echo $(pwd)
+    fi
+}    
+
+verify_ai_dir_exists() {
+    if [ ! -d "${SOURCE_DIR}/${AI_DIR}" ]; then
+        echo "ERROR: ${SOURCE_DIR}/${AI_DIR} directory not found"
+        exit 1
+    fi
+}
+
+fix_dir_paths() {
+    set_default_values
+    SOURCE_DIR=$(fix_dir_path_to_be_absolute "${SOURCE_DIR}")
+    TARGET_DIR=$(fix_dir_path_to_be_absolute "${TARGET_DIR}")
+    verify_ai_dir_exists
+}
 
 remove_shared_skills() {
     echo ""
     echo "** Removing shared skills on '$SOURCE_DIR' and '$TARGET_DIR' **"
     echo ""
-
-    for PACKAGE in "${PACKAGE_LIST[@]}"; do
-        remove_one_shared "$TARGET_DIR/$PACKAGE"
-    done
-
     remove_one_shared "$SOURCE_DIR"
 }
 
@@ -121,18 +163,6 @@ remove_one_shared() {
     done
 }
 
-share_skills() {
-    echo ""
-    echo "** Sharing skills from '$SOURCE_DIR' to '$TARGET_DIR' **"
-    echo ""
-
-    for PACKAGE in "${PACKAGE_LIST[@]}"; do
-        setup_package "$SOURCE_DIR" "$TARGET_DIR/$PACKAGE" true
-    done
-
-    setup_package "$SOURCE_DIR" "$SOURCE_DIR" true
-}
-
 setup_tool_dir_by_dir() {
     local source_dir="$1"
     local target_dir="$2"
@@ -187,7 +217,7 @@ setup_tool_dir_by_dir() {
     done
 }
 
-setup_package() {
+setup_shared_skills_and_commands() {
     local source_dir="$1"
     local target_dir="$2"
     local destroy_target_dirs="$3"
@@ -212,46 +242,55 @@ setup_package() {
     mkdir -p "$target_dir/.claude" "$target_dir/.codex" "$target_dir/.cursor" "$target_dir/.gemini" "$target_dir/.agents"
 
     # Skills symlinks (unified skills → each code agent tool)
-    if [ -d "$source_dir/.ai/skills" ]; then
-        setup_tool_dir_by_dir "$source_dir/.ai/skills" "$target_dir/.claude" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/skills" "$target_dir/.cursor" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/skills" "$target_dir/.agents" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/skills" "$target_dir/.codex" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/skills" "$target_dir/.gemini" "$destroy_target_dirs"
+    if [ -d "$source_dir/${AI_DIR}/skills" ]; then
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.claude" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.cursor" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.agents" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.codex" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.gemini" "$destroy_target_dirs"
     fi
 
     # Commands symlinks (unified commands → each code agent tool)
-    if [ -d "$source_dir/.ai/commands" ]; then
-        setup_tool_dir_by_dir "$source_dir/.ai/commands" "$target_dir/.claude" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/commands" "$target_dir/.cursor" "$destroy_target_dirs"
-        setup_tool_dir_by_dir "$source_dir/.ai/commands" "$target_dir/.agents" "$destroy_target_dirs"
+    if [ -d "$source_dir/${AI_DIR}/commands" ]; then
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/commands" "$target_dir/.claude" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/commands" "$target_dir/.cursor" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/commands" "$target_dir/.agents" "$destroy_target_dirs"
     fi
 
     # Settings symlinks (unified settings → each applicable code agent tool)
-    if [ -f "$source_dir/.ai/settings.json" ]; then
-        ln -sfn "$source_dir/.ai/settings.json" "$target_dir/.claude/settings.json"
+    if [ -f "$source_dir/${AI_DIR}/settings.json" ]; then
+        ln -sfn "$source_dir/${AI_DIR}/settings.json" "$target_dir/.claude/settings.json"
     fi
 
     # MCP config symlinks (unified config → each applicable code agent tool)
-    if [ -f "$source_dir/.ai/mcp.json" ]; then
-        ln -sfn "$source_dir/.ai/mcp.json" "$target_dir/.claude/mcp.json"
-        ln -sfn "$source_dir/.ai/mcp.json" "$target_dir/.cursor/mcp.json"
+    if [ -f "$source_dir/${AI_DIR}/mcp.json" ]; then
+        ln -sfn "$source_dir/${AI_DIR}/mcp.json" "$target_dir/.claude/mcp.json"
+        ln -sfn "$source_dir/${AI_DIR}/mcp.json" "$target_dir/.cursor/mcp.json"
     fi
 
     if [ "$source_dir" != "$target_dir" ]; then
         # If source and target are different, means we need to check if it has its own skills/commands
-        if [ -d "$target_dir/.ai" ]; then
+        if [ -d "$target_dir/${AI_DIR}" ]; then
             # If the package directory has an .ai directorty, means it has its own skills/commands...
             echo ""
             echo "Package directory '$target_dir' has its own skills/commands..."
-            setup_package "$target_dir" "$target_dir" false
+            setup_shared_skills_and_commands "$target_dir" "$target_dir" false
         fi
     fi
 
     # NOTE: Claude Desktop can't be symlinked (needs 'preferences' key).
 }
 
+share_skills() {
+    echo ""
+    echo "** Sharing skills from '$SOURCE_DIR' to '$TARGET_DIR' **"
+    echo ""
+    setup_shared_skills_and_commands "$SOURCE_DIR" "$TARGET_DIR" true
+}
+
 # Main procedure
+
+fix_dir_paths
 
 if [ "$ACTION" = "add" ]; then
     share_skills
