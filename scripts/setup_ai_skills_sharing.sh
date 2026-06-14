@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup_ai_skills_sharing.sh
+# scripts/setup_ai_skills_sharing.sh
 # 2026-05-19 | CR
 
 # Reference:
@@ -85,6 +85,7 @@ remove_one_shared() {
         ".cursor"
         ".gemini"
         ".agents"
+        ".devin"
     )
 
     if [ -z "$source_dir" ]; then
@@ -239,7 +240,7 @@ setup_shared_skills_and_commands() {
     echo ""
 
     # Ensure code agent tool config directories exist
-    mkdir -p "$target_dir/.claude" "$target_dir/.codex" "$target_dir/.cursor" "$target_dir/.gemini" "$target_dir/.agents"
+    mkdir -p "$target_dir/.claude" "$target_dir/.codex" "$target_dir/.cursor" "$target_dir/.gemini" "$target_dir/.agents" "$target_dir/.devin"
 
     # Skills symlinks (unified skills → each code agent tool)
     if [ -d "$source_dir/${AI_DIR}/skills" ]; then
@@ -248,6 +249,7 @@ setup_shared_skills_and_commands() {
         setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.agents" "$destroy_target_dirs"
         setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.codex" "$destroy_target_dirs"
         setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.gemini" "$destroy_target_dirs"
+        setup_tool_dir_by_dir "$source_dir/${AI_DIR}/skills" "$target_dir/.devin" "$destroy_target_dirs"
     fi
 
     # Commands symlinks (unified commands → each code agent tool)

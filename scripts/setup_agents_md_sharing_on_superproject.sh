@@ -1,6 +1,6 @@
 #!/bin/bash
-# scripts/setup_ai_skills_sharing_on_superproject.sh
-# 2026-05-22 | CR
+# scripts/setup_agents_md_sharing_on_superproject.sh
+# 2026-05-24 | CR
 
 set -e
 
@@ -19,7 +19,7 @@ fi
 ACTION="$1"
 if [ "$ACTION" = "" ]; then
     echo ""
-    echo "Share superproject AI skills/commands across code agent tools (Claude, Gemini, Codex, Cursor, Agents) on all packages."
+    echo "Share superproject Claude.md across code agent tools (Gemini, Codex, Cursor, Agents) on all packages."
     echo "Usage: $0 <add|remove>"
     echo ""
     exit 1
@@ -28,12 +28,12 @@ fi
 # PACKAGE_LIST is defined in get_package_list.sh
 source "${SCRIPT_DIR}/get_package_list.sh" > /dev/null 2>&1
 
-remove_shared_skills() {
+remove_shared_agents_md() {
     echo ""
-    echo "** Removing shared skills on '$SOURCE_DIR' and '$TARGET_DIR' **"
+    echo "** Removing shared CLAUDE.md on '$SOURCE_DIR' and '$TARGET_DIR' **"
     echo ""
     for PACKAGE in "${PACKAGE_LIST[@]}"; do
-        bash "${SCRIPT_DIR}/setup_ai_skills_sharing.sh" remove "$TARGET_DIR/$PACKAGE"
+        bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" remove "$TARGET_DIR/$PACKAGE"
     done
     bash "${SCRIPT_DIR}/setup_ai_skills_sharing.sh" remove "$SOURCE_DIR"
 }
@@ -53,7 +53,7 @@ share_skills() {
 if [ "$ACTION" = "add" ]; then
     share_skills
 elif [ "$ACTION" = "remove" ]; then
-    remove_shared_skills
+    remove_shared_agents_md
 else
     echo ""
     echo "Invalid action: $ACTION"

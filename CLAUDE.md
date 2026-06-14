@@ -89,9 +89,37 @@ All packages use stage-specific `.env` files (`dev`, `qa`, `staging`, `prod`). S
 - Log injection prevention: sanitize newlines before logging
 - SAST scan (Snyk) required before publishing any package to PyPI/npm
 
+## Non-Negotiable Rules
+
+- **Shell**: always use `bash` (macOS/Linux only; use WSL on Windows)
+- **Backend results**: every function must return `{"error": bool, "error_message": str | None, "resultset": Any}`
+- **Passwords**: scrypt only (never bcrypt or MD5)
+- **Secrets**: never hardcode; use stage-specific `.env` files
+- **SQL injection**: parameterized queries + identifier quoting in `genericsuite-be`
+- **Submodules**: all packages live under `packages/` — work inside the relevant submodule, not at the root
+- **Lint before commit**: run the project linter before staging any changes
+
 ## Development environment
 
-- **Always use bash**: this project and all sub-projects are MacOS and Linux-based, so always use bash for shell commands, even if the development environment is Windows (use WSL).
+### Package Manager
+
+- Backend: `poetry`
+- Frontend: `npm` (never yarn or pnpm unless the sub-package explicitly uses it)
+
+## Skills
+
+Prefer invoking skills over reading long rules. Skills are only loaded when needed.
+
+| Trigger | Skill | When to invoke |
+|---------|-------|----------------|
+| `/graphify` | `graphify` | Codebase exploration, knowledge graph, architecture questions |
+| `/init-claude-md` | `init-claude-md` | Initialize a new CLAUDE.md file (or update an existing one) for a codebase |
+| `/openspec-explore` | `openspec-explore` | Thinking through a problem before writing code |
+| `/openspec-propose` | `openspec-propose` | Drafting a full change proposal with design + tasks |
+| `/openspec-apply-change` | `openspec-apply-change` | Implementing tasks from an existing OpenSpec change |
+| `/openspec-archive-change` | `openspec-archive-change` | Finalising and archiving a completed change |
+
+Skills live in `.ai/skills/` (source of truth); symlinked under `.agents/skills/`, `.claude/skills/`, `.codex/skills/`, `.gemini/skills/`, and `.devin/skills/`.
 
 ## Documentation
 
@@ -101,4 +129,4 @@ All packages use stage-specific `.env` files (`dev`, `qa`, `staging`, `prod`). S
 ## Important Notes
 
 - The files `AGENTS.md`, `GEMINI.md`, etc. (if present) have only a referece to `@CLAUDE.md` — edit only `CLAUDE.md`.
-- Skills, commands, rules, and sub-agents are located in the `.claude/` directory.
+- Skills, commands, rules, and sub-agents are located in the `.claude/`, `.codex/`, `.cursor/`, `.gemini/`, `.agents/`, `.devin/` directories, and are symlinked to the corresponding directories in the submodules and the superproject from `.ai` directory.
