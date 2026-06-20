@@ -30,8 +30,9 @@ if [ ! -d "${PACKAGES_PATH}" ]; then
 fi
 
 for PACKAGE in "${PACKAGE_LIST[@]}"; do
-    echo "Updating ${PACKAGE}..."
     if [ ! -d "${PACKAGES_PATH}/${PACKAGE}" ]; then
+        echo ""
+        echo "Adding submodule for ${PACKAGE}..."
         if [ "${SUBMODULE}" = "1" ]; then
             if ! git submodule add ${GIT_HOST}/${GIT_USER}/${PACKAGE}.git "${PACKAGES_PATH}/${PACKAGE}"
             then
@@ -41,6 +42,8 @@ for PACKAGE in "${PACKAGE_LIST[@]}"; do
                 continue
             fi
         else
+            echo ""
+            echo "Cloning ${PACKAGE}..."
             if ! git clone ${GIT_HOST}/${GIT_USER}/${PACKAGE}.git "${PACKAGES_PATH}/${PACKAGE}"
             then
                 echo "Error: Could not clone repository '${PACKAGE}'"
@@ -50,11 +53,18 @@ for PACKAGE in "${PACKAGE_LIST[@]}"; do
             fi
         fi
     fi
+    echo ""
     echo "Updating ${PACKAGE}..."
     cd "${PACKAGES_PATH}/${PACKAGE}"
+    if [ "${STASH}" = "1" ]; then
+        echo ""
+        echo "Stashing changes for ${PACKAGE}..."
+        git stash
+    fi
     git fetch -a
     if [ "$BRANCH" != "" ]; then
-        echo "Checkingout ${PACKAGE}..."
+        echo ""
+        echo "Checking-out branch ${BRANCH} for ${PACKAGE}..."
         git checkout "${BRANCH}"
     fi
     git pull
