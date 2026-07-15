@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ## [Unreleased] - Date
 
 ### Added
+- 1-1 relationships in the Generic CRUD Editor via the `select_table` field type, across genericsuite-be (all 5 DB engines), genericsuite-fe (GCE_RFC) and genericsuite-mobile (GCE_FLUTTER) [GS-select-table].
 
 ### Changed
 
