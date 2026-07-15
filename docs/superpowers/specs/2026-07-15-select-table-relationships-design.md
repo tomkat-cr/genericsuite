@@ -182,6 +182,21 @@ Mirror Phase 2 with the same JSON attributes read from asset configs:
 - No breaking changes: new field type is opt-in per JSON config; existing
   `select`, `select_component`, and `suggestion_dropdown` behavior unchanged.
 
+## Implementation deviations (recorded post-review)
+
+- §1b as built: `resolve_relationships` / `_fetch_related_rows` live in
+  `GenericDbHelperSuper` (generic CRUD layer) with `APP_DB_ENGINE`
+  dispatch, not on the `DbAbstract` contract; only `batch_get` landed in
+  the DynamoDB adapter, and the MongoDB `$lookup` path lives in
+  `generic_db_helpers.py`. Functionally equivalent and simpler, but it
+  leaks engine knowledge into the CRUD layer. Follow-up ticket: move the
+  dispatch into `db_abstractor_super.py` before adding the deferred SQL
+  `LEFT JOIN` optimization.
+- Cache keys for the FE/Flutter dropdown and fallback lookups include
+  `related_key` and a serialized `related_filter` (not just the table
+  name) to avoid collisions between two `select_table` fields sharing a
+  related table.
+
 ## Out of scope
 
 - Native SQL `LEFT JOIN` optimization (follow-up).
