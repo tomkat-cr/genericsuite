@@ -20,7 +20,6 @@
 | **`genericsuite-be`** | Core for GenericSuite backend based projects using FastAPI, Flask or Chalice. |
 | **`genericsuite-be-ai`** | AI for GenericSuite backend based projects. |
 | **`genericsuite-be-scripts`** | Scripts for GenericSuite backend based projects. |
-| **`genericsuite-codegen`** | Code generation for GenericSuite based projects. |
 | **`genericsuite-fe`** | Core for GenericSuite frontend based projects using ReactJS. |
 | **`genericsuite-fe-ai`** | AI for GenericSuite frontend based projects. |
 | **`genericsuite-fe-scripts`** | Frontend development utilities and scripts for web applications. |

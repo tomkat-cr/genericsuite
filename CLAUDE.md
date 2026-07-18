@@ -16,7 +16,7 @@ packages/
   genericsuite-be-scripts    # Bash deployment/dev scripts for backend projects
   genericsuite-codegen       # FastAPI + React + MCP server for AI-powered code generation
   genericsuite-app-maker     # Streamlit + FastAPI AI development assistant (GSAM)
-  genericsuite-asdt-be       # Multi-agent AI software dev team (CrewAI/CamelAI/LangGraph)
+  genericsuite-asdt-be       # Multi-agent AI software dev team (CrewAI/CamelAI)
   genericsuite-skills        # Claude AI skills/slash commands collection
   genericsuite-mobile        # Flutter core package + app template
   genericsuite-basecamp      # Documentation hub + example apps (MkDocs)
