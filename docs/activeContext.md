@@ -19,7 +19,7 @@
 - **Tickets**: GS-306
 
 #### 3. CRUD Editor 1-1 relationships supporting the listing page
-- **Status**: In progress
+- **Status**: Testing pending
 - **Focus**: Add 1-1 relationships support to the CRUD Editor listing page (first focus on GCE_RFC, then GCE_FLUTTER).
 - **Next Steps**: 1. Implement queries with relationships between tables on the MongoDB abstraction; 2. Implement queries with relationships between tables on the DynamoDB abstraction; 3. Implement queries with relationships between tables on relational databases abstraction (PostgreSQL, MySQL, and Supabase); 4. Implement the `select_table` field type in the GCE_RFC (CRUD Editor, React Function Component) listing page; 5. Implement `select_table` in the form page when in query/read-only state; 6. Do the same for GCE_FLUTTER (CRUD Editor, Flutter Widgets).
 - **Tickets**: GS-259
@@ -43,54 +43,66 @@
 - **Next Steps**: Implement ShadCN components on the genericsuite-fe and genericsuite-fe-ai repositories.
 - **Tickets**: GS-150
 
-#### 7. Enhance the GS Mobile UI to be more attractive and consistent (New Initiative)
-- **Status**: Planning phase
-- **Focus**: Enhance the genericsuite-mobile UI to be more attractive and consistent with something like ShadCN components used in the webapps.
-- **Next Steps**: Enhance the GS Mobile UI to be more attractive and consistent.
+#### 7. Finish GS Mobile UI to handle childComponents (New Initiative)
+- **Status**: In progress
+- **Focus**: The genericsuite-mobile CRUD Editor is not yet able to handle childComponents.
+- **Next Steps**: Implement the childComponents support on the genericsuite-mobile CRUD Editor, same way the genericsuite-fe CRUD Editor already handles it.
 - **Tickets**: GS-261
 
-#### 8. Add GCP object storage services (Active)
+#### 8. Enhance the GS Mobile UI to be more attractive and consistent (New Initiative)
+- **Status**: In progress
+- **Focus**: Enhance the genericsuite-mobile UI to be more attractive and consistent with something like ShadCN components used in the webapps.
+- **Next Steps**: 1. use `shadcn_ui` as the flutter-shadcn-ui port and to own the widget-tree root; 2. Use Apple look natively - design language: Apple-clean, both surfaces: white/neutral surfaces, near-black text, one accent (default Colors.green from `theme_config_defaults.dart`), 12 px radius, iOS system semantic colors. Web work must compose ShadCN components from `ui/src/components/ui/` (button, card, input, select, sheet already exist there); 3. expose a typography token (`fontFamily` and/or `textTheme`) in the `getThemeParams()` contract, applied by `CreateGsApp` when it builds the `MaterialApp` theme — with the Prico intent spelled out (Inter via the already-bundled `google_fonts` for the SF-Pro-like feel), add the token to `theme_config_defaults.dart`
+- **Tickets**: GS-261
+
+#### 9. Add GCP object storage services (Active)
 - **Status**: Testing and documentation pending
 - **Focus**: Add GCP object storage services to backend, as it is currently only available for AWS.
 - **Next Steps**: Define GCP object storage services, implement them
 - **Tickets**: GS-318
 
-#### 9. Add Azure object storage services (Active)
+#### 10. Add Azure object storage services (Active)
 - **Status**: Testing and documentation pending
 - **Focus**: Add Azure object storage services to backend, as it is currently only available for AWS.
 - **Next Steps**: Define Azure object storage services, implement them
 - **Tickets**: GS-317
 
-#### 10. Convert current AWS deployment to OpenTofu (New Initiative)
-- **Status**: Planning phase
+#### 11. Convert current AWS deployment to OpenTofu (New Initiative)
+- **Status**: Testing pending
 - **Focus**: Convert current AWS deployment bash scripts to OpenTofu.
 - **Stakeholders**: Devops team
 - **Next Steps**: 1. Gather and review all AWS current frontend/backend deployment scripts based on CloudFormation; 2. Check if there are any other deployments that are not covered by the scripts above and suggest them and eventually improvements to the scripts; 3. Create the OpenTofu version for all deployments; 4. Test the deployments; 5. Generate the documentation for the deployments
 - **Tickets**: GS-334
 
-#### 10. Add GCP deployment options (New Initiative)
+#### 12. Add GCP deployment options (New Initiative)
 - **Status**: Planning phase
 - **Focus**: Add GCP deployment options to backend and UI, as it is currently only available for AWS.
 - **Next Steps**: Define GCP deployment elements, use OpenTofu instead of platform-specific scripts, and implement them
 - **Tickets**: GS-40
 
-#### 11. Add Azure deployment options (New Initiative)
+#### 13. Add Azure deployment options (New Initiative)
 - **Status**: Planning phase
 - **Focus**: Add Azure deployment options to backend and UI, as it is currently only available for AWS.
 - **Next Steps**: Define Azure deployment elements, use OpenTofu instead of platform-specific scripts, and implement them
 - **Tickets**: GS-316
 
-#### 12. Documentation Review (New Initiative)
+#### 14. Documentation Review (New Initiative)
 - **Status**: Planning phase
 - **Focus**: Review all existing documentation with a collaborator to make it clearer, more understandable, and more comprehensive
 - **Next Steps**: Schedule review sessions, identify gaps, rewrite unclear sections
 - **Tickets**: ???
 
-#### 13. Release documentation automation (New Initiative)
+#### 15. Release documentation automation (New Initiative)
 - **Status**: Testing and documentation pending
 - **Focus**: Automate the release of the documentation for the GenericSuite packages.
 - **Next Steps**: Check all the current documentation I use to gather all the CHANGELOG.md files, the procedure I follow to summarize the changes, the PRs, the tags, the packages versions published on NPMJS/Pypi, the prompts to generate the images, and the final document to be published on the GS Basecamp.
 - **Tickets**: GS-191
+
+### 16. Add sort feature to the Generic CRUD editor listing page
+- **Status**: Planning phase
+- **Focus**: Add sort feature to the Generic CRUD editor listing page.
+- **Next Steps**: 1. Add columns headers links to the Generic CRUD editor listing page (genericsuite-fe) to allow the user to sort the columns by clicking on the header; 2. Add the ability on the GS BE Core (genericsuite-be) to receive the sort parameter and add the sort order to the query.
+- Use ticket [GS-24] to changelog and commits.
 
 ### Completed Initiatives (Recent)
 
@@ -116,14 +128,16 @@
 1. **App generation Skills**: testing pending
 2. **Generate a new project from the code templates**: testing and documentation pending
 3. **Release documentation automation**: testing pending
-4. **CRUD Editor 1-1 relationships supporting the listing page**
-5. **Convert current AWS deployment to OpenTofu**
+4. **Convert current AWS deployment to OpenTofu**: testing pending
+5. **CRUD Editor 1-1 relationships supporting the listing page**: testing pending
+6. **GS Mobile UI to handle 1-N relationships in the CRUD Editor**: testing pending
 
 ### Short Term 1 (Next 2 Weeks)
-1. **Users onboarding**
-2. **Finish the GS Mobile UI to handle 1-N relationships in the CRUD Editor**
-3. **Enhance the GS Mobile UI to be more attractive and consistent**
-4. **ExampleApp .env Unification**: Redesign `.env` structure to match `fastapitemplate` pattern, enhance `.env.example` to make it easy to change the backend port and framework and document it on the README.md file
+1. **Finish GS Mobile UI to handle childComponents**
+2. **Enhance the GS Mobile UI to be more attractive and consistent**
+3. **Add sort feature to the Generic CRUD editor listing page**
+4. **Users onboarding**
+5. **ExampleApp .env Unification**: Redesign `.env` structure to match `fastapitemplate` pattern, enhance `.env.example` to make it easy to change the backend port and framework and document it on the README.md file
 
 ### Short Term 2 (Next 4 Weeks)
 3. **Add GCP deployment options**
