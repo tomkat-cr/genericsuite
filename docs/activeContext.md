@@ -44,16 +44,18 @@
 - **Tickets**: GS-150
 
 #### 7. Finish GS Mobile UI to handle childComponents (New Initiative)
-- **Status**: In progress
+- **Status**: Implemented, testing pending
 - **Focus**: The genericsuite-mobile CRUD Editor is not yet able to handle childComponents.
 - **Next Steps**: Implement the childComponents support on the genericsuite-mobile CRUD Editor, same way the genericsuite-fe CRUD Editor already handles it.
 - **Tickets**: GS-261
+- **Progress (2026-07-19)**: Implemented in genericsuite-mobile 0.5.0 (see packages/genericsuite-mobile/CHANGELOG.md) and documented in GS Basecamp Mobile Development section.
 
 #### 8. Enhance the GS Mobile UI to be more attractive and consistent (New Initiative)
-- **Status**: In progress
+- **Status**: Implemented, testing pending
 - **Focus**: Enhance the genericsuite-mobile UI to be more attractive and consistent with something like ShadCN components used in the webapps.
 - **Next Steps**: 1. use `shadcn_ui` as the flutter-shadcn-ui port and to own the widget-tree root; 2. Use Apple look natively - design language: Apple-clean, both surfaces: white/neutral surfaces, near-black text, one accent (default Colors.green from `theme_config_defaults.dart`), 12 px radius, iOS system semantic colors. Web work must compose ShadCN components from `ui/src/components/ui/` (button, card, input, select, sheet already exist there); 3. expose a typography token (`fontFamily` and/or `textTheme`) in the `getThemeParams()` contract, applied by `CreateGsApp` when it builds the `MaterialApp` theme — with the Prico intent spelled out (Inter via the already-bundled `google_fonts` for the SF-Pro-like feel), add the token to `theme_config_defaults.dart`
 - **Tickets**: GS-261
+- **Progress (2026-07-19)**: Implemented in genericsuite-mobile 0.5.0 (see packages/genericsuite-mobile/CHANGELOG.md) and documented in GS Basecamp Mobile Development section.
 
 #### 9. Add GCP object storage services (Active)
 - **Status**: Testing and documentation pending

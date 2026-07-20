@@ -7,6 +7,8 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ## [Unreleased] - YYYY-MM-DD
 
 ### Added
+- `childComponents` (1-N relationships) support in the GS Mobile (Flutter) CRUD Editor, matching the genericsuite-fe behavior, plus a new Mobile Development documentation section in GS Basecamp [GS-261].
+- Apple-clean UI for GS Mobile: shadcn_ui-owned widget-tree root, green accent, 12px radius, iOS semantic colors, and Inter typography tokens in the getThemeParams() contract [GS-261].
 
 ### Changed
 
