@@ -19,7 +19,7 @@
 - Shell: `#!/bin/bash`, `set -euo pipefail`, quoted expansions (`"${var}"`), `read VAR < /dev/tty` for prompts, perl over sed (per `packages/genericsuite-be-scripts/docs/codeStyle.md`).
 - Secrets: only via `TF_VAR_*` env vars marked `sensitive = true`; never written to `.tfvars` files on disk.
 - Provider `default_labels` on every stack: `app`, `stage`, `managed_by = "opentofu"`, `ticket = "gs-40"`. GCP label values must be lowercase.
-- Commits: inside each submodule (`packages/genericsuite-be-scripts`, `packages/genericsuite-fe-scripts`, `packages/genericsuite-basecamp`) on their current `develop` branch; message suffix `[GS-40]` and second `-m` line `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
+- Commits: inside each submodule (`packages/genericsuite-be-scripts`, `packages/genericsuite-fe-scripts`, `packages/genericsuite-basecamp`) on their current `develop` branch; message suffix `[GS-40]` and second `-m` line `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - Test cycle for HCL tasks: `tofu fmt -recursive` on the `gcp_tf` tree, then `tofu init -backend=false -input=false` + `tofu validate` in each stack directory touched. For bash: `bash -n FILE`. No GCP credentials are needed for any validation step.
 - Do NOT run `tofu apply`/`plan` against a real GCP project anywhere in this plan — real applies are a manual step for Carlos (Task 15, Step 3).
 
@@ -357,7 +357,7 @@ Expected: no output, exit 0 for each.
 cd packages/genericsuite-be-scripts
 git rev-parse --abbrev-ref HEAD   # Expected: develop. If not, run: git checkout develop
 git add scripts/gcp_tf/bootstrap-tf-state.sh scripts/gcp_tf/run-tf-deployment.sh scripts/gcp_tf/build_push_image.sh
-git commit -m "Add: GCP OpenTofu generic wrapper, GCS state bootstrap and Artifact Registry image build/push helper in scripts/gcp_tf [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu generic wrapper, GCS state bootstrap and Artifact Registry image build/push helper in scripts/gcp_tf [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -581,7 +581,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/gcs-bucket scripts/gcp_tf/stacks/gcs
-git commit -m "Add: GCP OpenTofu gcs-bucket module and gcs stack (chatbot attachments) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu gcs-bucket module and gcs stack (chatbot attachments) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -784,7 +784,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/kms-key scripts/gcp_tf/stacks/kms
-git commit -m "Add: GCP OpenTofu kms-key module and kms stack (Cloud KMS ring + rotated crypto key) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu kms-key module and kms stack (Cloud KMS ring + rotated crypto key) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -1171,7 +1171,7 @@ Expected: `Success! The configuration is valid.` (and no output from `bash -n`).
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/secrets scripts/gcp_tf/stacks/secrets
-git commit -m "Add: GCP OpenTofu secrets module and stack (Secret Manager with CMEK + env maps builder) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu secrets module and stack (Secret Manager with CMEK + env maps builder) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -1378,7 +1378,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/artifact-registry scripts/gcp_tf/stacks/ar
-git commit -m "Add: GCP OpenTofu artifact-registry module and ar stack (Docker repo + cleanup policies) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu artifact-registry module and ar stack (Docker repo + cleanup policies) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -1833,7 +1833,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/cloud-run-api scripts/gcp_tf/stacks/cloudrun
-git commit -m "Add: GCP OpenTofu cloud-run-api module and cloudrun stack (Cloud Run v2 + scoped SA + domain mapping) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu cloud-run-api module and cloudrun stack (Cloud Run v2 + scoped SA + domain mapping) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -2386,7 +2386,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-be-scripts
 git add scripts/gcp_tf/modules/gce-lb scripts/gcp_tf/stacks/gce
-git commit -m "Add: GCP OpenTofu gce-lb module and gce stack (COS container + global HTTPS LB + IAP SSH) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu gce-lb module and gce stack (COS container + global HTTPS LB + IAP SSH) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -2438,7 +2438,7 @@ Expected: no output (nothing modified).
 ```bash
 cd packages/genericsuite-be-scripts
 git add CHANGELOG.md
-git commit -m "Change: CHANGELOG entry for GCP OpenTofu IaC deployments [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Change: CHANGELOG entry for GCP OpenTofu IaC deployments [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -2668,7 +2668,7 @@ Expected: no output, exit 0.
 cd packages/genericsuite-fe-scripts
 git rev-parse --abbrev-ref HEAD   # Expected: develop. If not, run: git checkout develop
 git add scripts/gcp_tf/bootstrap-tf-state.sh scripts/gcp_tf/run-tf-deployment.sh
-git commit -m "Add: GCP OpenTofu generic wrapper and GCS state bootstrap in scripts/gcp_tf [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu generic wrapper and GCS state bootstrap in scripts/gcp_tf [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -3007,7 +3007,7 @@ Expected: `Success! The configuration is valid.`
 ```bash
 cd packages/genericsuite-fe-scripts
 git add scripts/gcp_tf/modules/frontend-hosting scripts/gcp_tf/stacks/frontend
-git commit -m "Add: GCP OpenTofu frontend-hosting module and frontend stack (GCS + Cloud CDN + HTTPS LB + managed SSL) [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu frontend-hosting module and frontend stack (GCS + Cloud CDN + HTTPS LB + managed SSL) [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -3176,7 +3176,7 @@ Expected: no output.
 ```bash
 cd packages/genericsuite-fe-scripts
 git add scripts/gcp_tf/gcp_tf_deploy_to_gcs.sh CHANGELOG.md
-git commit -m "Add: GCP OpenTofu frontend deploy pipeline gcp_tf_deploy_to_gcs.sh and CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu frontend deploy pipeline gcp_tf_deploy_to_gcs.sh and CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -3366,7 +3366,7 @@ Expected: no errors (or `SKIP` line). If `mkdocs build` fails on the two new lin
 cd packages/genericsuite-basecamp
 git rev-parse --abbrev-ref HEAD   # Expected: develop. If not, run: git checkout develop
 git add mkdocs_root/en/Deployment-Guide/opentofu-gcp.md mkdocs.yml CHANGELOG.md
-git commit -m "Add: GCP OpenTofu deployment guide, mkdocs nav entries and CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: GCP OpenTofu deployment guide, mkdocs nav entries and CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 cd ../..
 ```
 
@@ -3399,7 +3399,7 @@ Do NOT stage `docs/activeContext.md` or the `packages/` submodule pointers unles
 ```bash
 git rev-parse --abbrev-ref HEAD   # Expected: develop
 git add CHANGELOG.md docs/superpowers/specs/2026-07-19-gcp-opentofu-conversion-design.md docs/superpowers/plans/2026-07-19-gcp-opentofu-conversion.md
-git commit -m "Add: design spec and implementation plan for GCP OpenTofu conversion; CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+git commit -m "Add: design spec and implementation plan for GCP OpenTofu conversion; CHANGELOG entry [GS-40]" -m "Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---

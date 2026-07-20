@@ -13,7 +13,7 @@
 ## Global Constraints
 
 - Ticket for ALL changelog entries and ALL commit messages: **[GS-261]**.
-- Commit message style follows the repos' existing convention: `Add: ... [GS-261]`, `Change: ... [GS-261]`, `Fix: ... [GS-261]`. End every commit message body with `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
+- Commit message style follows the repos' existing convention: `Add: ... [GS-261]`, `Change: ... [GS-261]`, `Fix: ... [GS-261]`. End every commit message body with `Co-Authored-By: Claude <noreply@anthropic.com>`.
 - Work **inside the submodules** (`packages/genericsuite-mobile`, `packages/genericsuite-basecamp`), each already on branch `develop`. Commit in each submodule separately. Note: `packages/` is untracked in the superproject, so there are no submodule-pointer commits at the root — only `docs/activeContext.md` and root `CHANGELOG.md` are committed at the root.
 - All Flutter commands run from `packages/genericsuite-mobile/genericsuite_flutter/` unless stated otherwise. `flutter analyze` must pass (zero issues) before every commit.
 - Shell: bash.
@@ -246,7 +246,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/crud_editor_commons.dart genericsuite_flutter/test/child_row_to_save_test.dart
 git commit -m "Add: buildChildRowToSave() payload builder for child_listing editors, mirroring genericsuite-fe saveRowToDatabase [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -467,7 +467,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/crud_editor_child_components.dart genericsuite_flutter/lib/genericsuite.dart genericsuite_flutter/test/crud_editor_child_components_test.dart
 git commit -m "Add: childComponents navigation sections for the Flutter CRUD Editor [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -594,7 +594,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/form_field_service.dart genericsuite_flutter/test/crud_editor_child_components_test.dart
 git commit -m "Add: render childComponents sections in the CRUD Editor edit form [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -774,7 +774,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/crud_editor.dart
 git commit -m "Add: child_listing save/delete payloads and child-screen back navigation in CrudEditor [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -853,7 +853,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/README.md
 git commit -m "Add: childComponents usage documentation in genericsuite_flutter README [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -884,7 +884,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/pubspec.yaml genericsuite_flutter/pubspec.lock
 git commit -m "Add: shadcn_ui and google_fonts dependencies; bump genericsuite_flutter to 0.5.0 [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -1079,7 +1079,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/theme_config_defaults.dart genericsuite_flutter/lib/services/app_callables_super.dart genericsuite_flutter/test/theme_params_test.dart genericsuite_flutter/test/genericsuite_test.dart
 git commit -m "Change: Apple-clean theme tokens (accentColor green, 12px radius, Inter typography token, iOS semantic colors) and defaultThemeParams merge contract [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -1256,7 +1256,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/create_gs_app.dart
 git commit -m "Change: ShadApp.custom owns the widget-tree root and CreateGsApp builds the Material theme from GenericSuite tokens [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -1346,7 +1346,7 @@ cd packages/genericsuite-mobile
 git add genericsuite_flutter/lib/services/form_field_service.dart genericsuite_flutter/lib/widgets/app_frame.dart
 git commit -m "Change: shadcn_ui Save/Cancel buttons and Apple-clean form/AppBar polish [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ---
@@ -1560,7 +1560,7 @@ python3 -c "import yaml; yaml.safe_load(open('mkdocs.yml'))" && echo YAML-OK
 git add mkdocs.yml mkdocs_root/en/Mobile-Development/index.md CHANGELOG.md
 git commit -m "Add: Mobile Development documentation (GenericSuite Flutter, childComponents, theming) [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 (If `yaml` is missing, `pip3 install pyyaml` or verify indentation visually against the neighboring nav entries.)
@@ -1597,7 +1597,7 @@ cd packages/genericsuite-mobile
 git add CHANGELOG.md
 git commit -m "Add: CHANGELOG entries for childComponents support and Apple-clean/shadcn_ui UI enhancement [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 - [ ] **Step 3: Superproject root CHANGELOG**
@@ -1632,7 +1632,7 @@ cd /Users/carlosramirez/desarrollo/genericsuite
 git add CHANGELOG.md docs/activeContext.md
 git commit -m "Change: activeContext and CHANGELOG for GS Mobile childComponents and Apple-clean UI [GS-261]
 
-Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>"
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 Note: `docs/activeContext.md` already has unrelated local modifications — review `git diff docs/activeContext.md` first and only stage if the pre-existing edits belong in this commit; otherwise use `git add -p` to stage only the #7/#8 status changes.
