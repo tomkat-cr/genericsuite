@@ -13,19 +13,19 @@
 
 | Package | Description |
 | :--- | :--- |
-| **`genericsuite-app-maker`** | AI tool to enhance the software development ideation and test AI models, LLM providers and its features. |
-| **`genericsuite-asdt-be`** | provides a team of autonomous entities designed to solve software development problems using AI to make decisions, learn from interactions, and adapt to changing conditions without human intervention. |
-| **`genericsuite-basecamp`** | The starting point and documentation for GenericSuite based projects development. |
-| **`genericsuite-basecamp-app`** | Mobile app for Android and iOS with all the documentation on `genericsuite-basecamp`. |
-| **`genericsuite-be`** | Core for GenericSuite backend based projects using FastAPI, Flask or Chalice. |
-| **`genericsuite-be-ai`** | AI for GenericSuite backend based projects. |
-| **`genericsuite-be-scripts`** | Scripts for GenericSuite backend based projects. |
-| **`genericsuite-fe`** | Core for GenericSuite frontend based projects using ReactJS. |
-| **`genericsuite-fe-ai`** | AI for GenericSuite frontend based projects. |
-| **`genericsuite-fe-scripts`** | Frontend development utilities and scripts for web applications. |
-| **`genericsuite-gitops`** | Infrastructure as Code (IaC) and DevOps automation tools. |
-| **`genericsuite-mobile`** | GenericSuite core for mobile apps using Flutter. |
-| **`genericsuite-skills`** | A collection of AI skills and tools for code generation, evaluation, and automation. |
+| [genericsuite-be](https://github.com/tomkat-cr/genericsuite-be) | Core for GenericSuite backend based projects using FastAPI, Flask or Chalice. |
+| [genericsuite-be-ai](https://github.com/tomkat-cr/genericsuite-be-ai) | AI for GenericSuite backend based projects. |
+| [genericsuite-be-scripts](https://github.com/tomkat-cr/genericsuite-be-scripts) | Scripts for GenericSuite backend based projects. |
+| [genericsuite-fe](https://github.com/tomkat-cr/genericsuite-fe) | Core for GenericSuite frontend based projects using ReactJS. |
+| [genericsuite-fe-ai](https://github.com/tomkat-cr/genericsuite-fe-ai) | AI for GenericSuite frontend based projects. |
+| [genericsuite-fe-scripts](https://github.com/tomkat-cr/genericsuite-fe-scripts) | Frontend development utilities and scripts for web applications. |
+| [genericsuite-basecamp](https://github.com/tomkat-cr/genericsuite-basecamp) | The starting point and documentation for GenericSuite based projects development. |
+| [genericsuite-basecamp-app](https://github.com/tomkat-cr/genericsuite-basecamp-app) | Mobile app for Android and iOS with all the documentation on `genericsuite-basecamp`. |
+| [genericsuite-mobile](https://github.com/tomkat-cr/genericsuite-mobile) | GenericSuite core for mobile apps using Flutter. |
+| [genericsuite-skills](https://github.com/tomkat-cr/genericsuite-skills) | A collection of AI skills and tools for code generation, evaluation, and automation. |
+| [genericsuite-gitops](https://github.com/tomkat-cr/genericsuite-gitops) | Infrastructure as Code (IaC) and DevOps automation tools. |
+| [genericsuite-app-maker](https://github.com/tomkat-cr/genericsuite-app-maker) | AI tool to enhance the software development ideation and test AI models, LLM providers and its features. |
+| [genericsuite-asdt-be](https://github.com/tomkat-cr/genericsuite-asdt-be) | provides a team of autonomous entities designed to solve software development problems using AI to make decisions, learn from interactions, and adapt to changing conditions without human intervention. |
 
 ## 🛠️ Getting Started
 
@@ -35,6 +35,7 @@
 - Python (v3.10+)
 - Flutter (v3.10+)
 - Docker & Docker Compose
+- Make
 
 ### Installation
 
@@ -70,6 +71,6 @@ Join our community to share ideas, ask questions, and collaborate on building th
 
 ## Credits
 
-This project is developed and maintained by [Carlos J. Ramirez](https://carlosjramirez.com). For more information or to contribute to the GenericSuite project, visit [GenericSuite on GitHub](https://github.com/tomkat-cr/genericsuite-skills).
+This project is developed and maintained by [Carlos J. Ramirez](https://carlosjramirez.com). For more information or to contribute to the GenericSuite project, visit [GenericSuite on GitHub](https://github.com/tomkat-cr/genericsuite).
 
 Happy Coding!
