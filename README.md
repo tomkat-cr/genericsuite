@@ -22,6 +22,7 @@
 | [genericsuite-basecamp](https://github.com/tomkat-cr/genericsuite-basecamp) | The starting point and documentation for GenericSuite based projects development. |
 | [genericsuite-basecamp-app](https://github.com/tomkat-cr/genericsuite-basecamp-app) | Mobile app for Android and iOS with all the documentation on `genericsuite-basecamp`. |
 | [genericsuite-mobile](https://github.com/tomkat-cr/genericsuite-mobile) | GenericSuite core for mobile apps using Flutter. |
+| [genericsuite-mobile-exampleapp](https://github.com/tomkat-cr/genericsuite-mobile-exampleapp) | GenericSuite example mobile app. |
 | [genericsuite-skills](https://github.com/tomkat-cr/genericsuite-skills) | A collection of AI skills and tools for code generation, evaluation, and automation. |
 | [genericsuite-gitops](https://github.com/tomkat-cr/genericsuite-gitops) | Infrastructure as Code (IaC) and DevOps automation tools. |
 | [genericsuite-app-maker](https://github.com/tomkat-cr/genericsuite-app-maker) | AI tool to enhance the software development ideation and test AI models, LLM providers and its features. |
