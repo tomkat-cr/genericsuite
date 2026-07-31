@@ -40,3 +40,6 @@
 [submodule "packages/genericsuite-skills"]
 	path = packages/genericsuite-skills
 	url = https://github.com/tomkat-cr/genericsuite-skills.git
+[submodule "packages/genericsuite-mobile-exampleapp"]
+	path = packages/genericsuite-mobile-exampleapp
+	url = https://github.com/tomkat-cr/genericsuite-mobile-exampleapp.git
