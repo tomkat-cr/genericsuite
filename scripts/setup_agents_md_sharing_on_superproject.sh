@@ -33,25 +33,25 @@ remove_shared_agents_md() {
     echo "** Removing shared CLAUDE.md on '$SOURCE_DIR' and '$TARGET_DIR' **"
     echo ""
     for PACKAGE in "${PACKAGE_LIST[@]}"; do
-        bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" remove "$TARGET_DIR/$PACKAGE"
+        bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" remove symlink "$TARGET_DIR/$PACKAGE" "$TARGET_DIR/$PACKAGE"
     done
-    bash "${SCRIPT_DIR}/setup_ai_skills_sharing.sh" remove "$SOURCE_DIR"
+    bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" remove symlink "$SOURCE_DIR" "$SOURCE_DIR"
 }
 
-share_skills() {
+share_agents_md() {
     echo ""
-    echo "** Sharing skills from '$SOURCE_DIR' to '$TARGET_DIR' **"
+    echo "** Sharing CLAUDE.md as AGENTS.md/GEMINI.md on '$SOURCE_DIR' and '$TARGET_DIR' **"
     echo ""
     for PACKAGE in "${PACKAGE_LIST[@]}"; do
-        bash "${SCRIPT_DIR}/setup_ai_skills_sharing.sh" add "$SOURCE_DIR" "$TARGET_DIR/$PACKAGE"
+        bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" add symlink "$TARGET_DIR/$PACKAGE" "$TARGET_DIR/$PACKAGE"
     done
-    bash "${SCRIPT_DIR}/setup_ai_skills_sharing.sh" add "$SOURCE_DIR" "$SOURCE_DIR"
+    bash "${SCRIPT_DIR}/setup_agents_md_sharing.sh" add symlink "$SOURCE_DIR" "$SOURCE_DIR"
 }
 
 # Main procedure
 
 if [ "$ACTION" = "add" ]; then
-    share_skills
+    share_agents_md
 elif [ "$ACTION" = "remove" ]; then
     remove_shared_agents_md
 else

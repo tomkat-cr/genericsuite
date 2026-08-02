@@ -186,6 +186,9 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+# Release documentation working files (release-notes skill)
+releases-work/
+
 # Cursor
 #  Cursor is an AI-powered code editor. `.cursorignore` specifies files/directories to
 #  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
@@ -203,8 +206,6 @@ cython_debug/
 .cursor
 .gemini
 .devin
+# These are tracked pointer files
 AGENTS.md
 GEMINI.md
-
-# Release documentation working files (release-notes skill)
-releases-work/

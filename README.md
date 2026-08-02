@@ -48,7 +48,7 @@
 
 2. Retrieve all GenericSuite packages (repositories):
    ```bash
-   make update_packages
+   make update-packages
    # Or
    # ./scripts/update_packages.sh
    ```

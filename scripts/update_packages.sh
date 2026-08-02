@@ -6,7 +6,7 @@
 ask_user_to_continue() {
     echo "Do you want to continue (y/n)"
     read answer
-    if [ "${answer}" = "n"]; then
+    if [ "${answer}" = "n" ]; then
         echo "Aborting..."
         exit
     fi
