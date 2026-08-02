@@ -53,6 +53,21 @@
    # ./scripts/update_packages.sh
    ```
 
+## Update Packages
+
+About the `update-packages` command, there are some options:
+
+```bash
+# Default: add all packages as git submodules (recommended) and pull latest on BRANCH (default: develop)
+make update-packages
+
+# Alternative: add all packages as git submodules and pull latest on BRANCH main from the repository tomkat-cr/genericsuite
+BRANCH=main SUBMODULE=1 GIT_USER=tomkat-cr ./scripts/update_packages.sh
+
+# Alternative: use git clone instead of submodule-add (set SUBMODULE=0):
+SUBMODULE=0 ./scripts/update_packages.sh
+```
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.

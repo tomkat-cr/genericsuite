@@ -8,15 +8,7 @@ This is a monorepo orchestration layer (Superproject) of the GenericSuite ecosys
 
 ## Monorepo Commands
 
-```bash
-# Add all packages as submodules and pull latest on BRANCH (default: develop)
-make update-packages
-# Or directly:
-BRANCH=main SUBMODULE=1 GIT_USER=tomkat-cr ./scripts/update_packages.sh
-
-# Clone instead of submodule-add (set SUBMODULE=0):
-SUBMODULE=0 ./scripts/update_packages.sh
-```
+Run `make help` to list all targets. Package sync is `make update-packages` (see `scripts/update_packages.sh` for its `BRANCH`/`SUBMODULE`/`GIT_USER` variables).
 
 ## Cross-Package Architecture
 
@@ -71,13 +63,7 @@ All packages use stage-specific `.env` files (`dev`, `qa`, `staging`, `prod`). S
 - **SQL injection**: parameterized queries + identifier quoting in `genericsuite-be`
 - **Submodules**: all packages live under `packages/` — work inside the relevant submodule, not at the root
 - **Lint before commit**: run the project linter before staging any changes
-
-## Development environment
-
-### Package Manager
-
-- Backend: `poetry`
-- Frontend: `npm` (never yarn or pnpm unless the sub-package explicitly uses it)
+- **Package managers**: backend `poetry`; frontend `npm` (never yarn or pnpm unless the sub-package explicitly uses it)
 
 ## Skills
 
