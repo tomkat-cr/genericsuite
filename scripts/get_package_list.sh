@@ -15,8 +15,9 @@ export PACKAGE_LIST=(
     "genericsuite-fe-ai"
     "genericsuite-fe-scripts"
     "genericsuite-gitops"
-    "genericsuite-skills"
     "genericsuite-mobile"
     "genericsuite-mobile-exampleapp"
+    "genericsuite-skills"
+    "genericsuite-security"
     "genericsuite-codegen"
 )
