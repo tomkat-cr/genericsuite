@@ -10,7 +10,7 @@
 ## JavaScript / TypeScript (ExampleApp, FastAPI Template UI)
 - Formatter: `Prettier`
 - Linter: `ESLint` with per-package configs
-- Node.js version: `20+`
+- Node.js version: `26+`
 - Package manager: `npm workspaces` (preferred) or `pnpm`
 - Build tool: `Vite` (preferred) or `Webpack`
 - Monorepo orchestration: `NPM Workspaces` (preferred) or `TurboRepo`

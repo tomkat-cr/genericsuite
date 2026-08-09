@@ -38,7 +38,7 @@ TODO: Add out of scope ...
 ## Key Constraints
 
 ### Technical Constraints
-- Must maintain compatibility with Python 3.12+ and Node.js 20+
+- Must maintain compatibility with Python 3.12+ and Node.js 26+
 - Documentation must be accessible both online and offline
 - Example applications must work across multiple backend frameworks (FastAPI, Flask, Chalice, MCP Server)
 - Must support MongoDB, DynamoDB, PostgreSQL, MySQL, and Supabase database options

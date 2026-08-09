@@ -2877,7 +2877,7 @@ and is a parallel, opt-in alternative — nothing in the AWS scripts changes.
 
 - OpenTofu >= 1.10 (`brew install opentofu`)
 - Azure CLI (`brew install azure-cli`), logged in: `az login`
-- `jq`, `python3`, and for the frontend: Node 18+ and your bundler
+- `jq`, `python3`, and for the frontend: Node.js 26+ and your bundler
 - A stage-specific `.env` in the consuming app (see variables below)
 
 ## Environment variables

@@ -47,11 +47,11 @@ Contributions to individual packages should be submitted as pull requests to the
 
 Make sure the following tools are installed before starting:
 
-- **Node.js** v18+
-- **Python** v3.10+
-- **Flutter** v3.10+
-- **Docker** and **Docker Compose**
-- **bash** (always use bash for shell scripts — this project targets macOS and Linux; Windows users must use WSL)
+- **Node.js** v26+
+- **Python** v3.12+
+- **Flutter** v3.38+
+- **Docker** and **Docker Compose** (or **Podman** and **Podman Compose**)
+- **bash** (always use bash/zsh for shell scripts — this project targets macOS and Linux; Windows users must use WSL or Git Bash)
 
 ---
 

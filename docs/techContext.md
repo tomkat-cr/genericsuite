@@ -91,7 +91,7 @@
 - **React Testing Library**: Testing utilities for React components
 
 #### Development Environment
-- **Node.js 20+**: JavaScript runtime (version specified in `.nvmrc`)
+- **Node.js 26+**: JavaScript runtime (version specified in `.nvmrc`)
 - **Python 3.12+**: Python runtime (version specified in `.python-version`)
 - **Make**: Build automation and task runner
 - **Shell Scripts**: Bash scripts for common development tasks
@@ -101,29 +101,40 @@
 ### Prerequisites Installation
 
 #### System Requirements
+
+##### Package managers
 ```bash
 # Node.js via NVM (recommended)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install 20
-nvm use 20
+nvm install 26
+nvm use 26
+```
 
+```bash
 # Python via pyenv (recommended)
 curl https://pyenv.run | bash
 pyenv install 3.12
 pyenv global 3.12
+```
 
-# Package managers
-## Install UV:
 ```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-## Optionally, install Pnpm if you plan to use Turborepo:
-# npm install -g pnpm
+## Install UV (macOS):
+brew install uv
+## Install UV (Linux):
+# curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
+```bash
+## Optionally, install Pnpm if you plan to use Turborepo:
+npm install -g pnpm
+```
+
+##### Development Tools
+```bash
 # Build tools (macOS)
 brew install make
 ```
 
-#### Development Tools
 ```bash
 # AWS CLI (if using AWS services)
 brew install awscli
@@ -199,7 +210,7 @@ make exampleapp-create-ssl-certs
 
 ### Platform Constraints
 - **Operating System**: Primarily developed on macOS, compatible with Linux
-- **Node.js Version**: Requires Node.js 20+ for Tailwind CSS v4 and Shadcn v2+ compatibility
+- **Node.js Version**: Requires Node.js 26+ for Tailwind CSS v4 and Shadcn v2+ compatibility
 - **Python Version**: Requires Python 3.12+ and < 4.0 for GenericSuite compatibility
 - **Browser Support**: Modern browsers with ES6+ support
 

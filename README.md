@@ -32,10 +32,10 @@
 
 ### Prerequisites
 
-- Node.js (v18+)
-- Python (v3.10+)
-- Flutter (v3.10+)
-- Docker & Docker Compose
+- Node.js (v26+)
+- Python (v3.12+)
+- Flutter (v3.38+)
+- Docker & Docker Compose (or Podman & Podman Compose)
 - Make
 
 ### Installation
