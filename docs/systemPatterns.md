@@ -1,0 +1,3 @@
+# System Patterns - genericsuite superproject
+
+TODO: Add system patterns ...

@@ -1,0 +1,48 @@
+[submodule "packages/genericsuite-app-maker"]
+	path = packages/genericsuite-app-maker
+	url = https://github.com/tomkat-cr/genericsuite-app-maker.git
+[submodule "packages/genericsuite-asdt-be"]
+	path = packages/genericsuite-asdt-be
+	url = https://github.com/tomkat-cr/genericsuite-asdt-be.git
+[submodule "packages/genericsuite-basecamp"]
+	path = packages/genericsuite-basecamp
+	url = https://github.com/tomkat-cr/genericsuite-basecamp.git
+[submodule "packages/genericsuite-basecamp-app"]
+	path = packages/genericsuite-basecamp-app
+	url = https://github.com/tomkat-cr/genericsuite-basecamp-app.git
+[submodule "packages/genericsuite-be"]
+	path = packages/genericsuite-be
+	url = https://github.com/tomkat-cr/genericsuite-be.git
+[submodule "packages/genericsuite-be-ai"]
+	path = packages/genericsuite-be-ai
+	url = https://github.com/tomkat-cr/genericsuite-be-ai.git
+[submodule "packages/genericsuite-be-scripts"]
+	path = packages/genericsuite-be-scripts
+	url = https://github.com/tomkat-cr/genericsuite-be-scripts.git
+[submodule "packages/genericsuite-codegen"]
+	path = packages/genericsuite-codegen
+	url = https://github.com/tomkat-cr/genericsuite-codegen.git
+[submodule "packages/genericsuite-fe"]
+	path = packages/genericsuite-fe
+	url = https://github.com/tomkat-cr/genericsuite-fe.git
+[submodule "packages/genericsuite-fe-ai"]
+	path = packages/genericsuite-fe-ai
+	url = https://github.com/tomkat-cr/genericsuite-fe-ai.git
+[submodule "packages/genericsuite-fe-scripts"]
+	path = packages/genericsuite-fe-scripts
+	url = https://github.com/tomkat-cr/genericsuite-fe-scripts.git
+[submodule "packages/genericsuite-gitops"]
+	path = packages/genericsuite-gitops
+	url = https://github.com/tomkat-cr/genericsuite-gitops.git
+[submodule "packages/genericsuite-mobile"]
+	path = packages/genericsuite-mobile
+	url = https://github.com/tomkat-cr/genericsuite-mobile.git
+[submodule "packages/genericsuite-skills"]
+	path = packages/genericsuite-skills
+	url = https://github.com/tomkat-cr/genericsuite-skills.git
+[submodule "packages/genericsuite-mobile-exampleapp"]
+	path = packages/genericsuite-mobile-exampleapp
+	url = https://github.com/tomkat-cr/genericsuite-mobile-exampleapp.git
+[submodule "packages/genericsuite-security"]
+	path = packages/genericsuite-security
+	url = https://github.com/tomkat-cr/genericsuite-security.git
