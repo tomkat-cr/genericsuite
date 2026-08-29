@@ -17,7 +17,7 @@ This project adheres to [Semantic Versioning](http://semver.org/) and [Keep a Ch
 ### Security
 
 
-## [1.0.0] - 2026-07-15
+## [1.0.0] - 2026-08-30
 
 ### Added
 - Add: Introducing the GenericSuite superproject structure with git submodules, automation scripts, and project documentation, to make it easier to manage, change, and deploy the project as a whole [GS-319].
